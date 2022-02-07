@@ -18,11 +18,13 @@ public class Locker {
     this.loadAllFiles();    
   }
   private void loadAllFiles() {
+    int c = 0;
     this.folder = new File("./filestorage");
     this.lockerFiles = new ArrayList<LockerFile>();
     for (File file : folder.listFiles()) 
-      if(file.isFile()) 
-        lockerFiles.add(new LockerFile(file.getName(),file.getName().substring((file.getName().lastIndexOf('.')+1)) , new Date(file.lastModified())));
+      if(file.isFile()) {
+        lockerFiles.add(new LockerFile(file.getName(),file.getName().substring((file.getName().lastIndexOf('.')+1)) , new Date(file.lastModified()),c++));
+      }
     algo.sort(lockerFiles);
   }
   public void printAllFiles(){
@@ -39,12 +41,11 @@ public class Locker {
     System.out.print("Enter File Name - ");
     fname = input.nextLine();
     this.loadAllFiles();
-    int result = algo.binarySearch(this.lockerFiles,fname);
-    if (result == -1)
-            System.out.println("Element not present");
-        else
-            System.out.println("Element found at "
-                              + "index " + result);
+    LockerFile result = algo.binarySearch(this.lockerFiles,fname);
+    if (result == null)
+            System.out.println("FILE NOT FOUND");
+    else
+        System.out.println("FILE found at "+ result.getIndex()+"\n Name : "+result.getName()+"\n Extension : "+result.getExtension()+"\n Creation Time : "+result.getCreateTime());
   }
   private void createFile(){
     String fname;

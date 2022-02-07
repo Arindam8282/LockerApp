@@ -5,11 +5,21 @@ import java.util.Date;
 public class LockerFile {
   private String name,extension;
   private Date createTime;
+  private int index;
 
-  public LockerFile(String name, String extension, Date createTime) {
-    this.setName(name);
-    this.setExtension(extension);
-    this.setCreateTime(createTime);
+  public LockerFile(String name, String extension, Date createTime, int index) {
+    this.name = name;
+    this.extension = extension;
+    this.createTime = createTime;
+    this.index = index;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 
   public Date getCreateTime() {
