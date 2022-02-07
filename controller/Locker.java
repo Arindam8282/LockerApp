@@ -48,9 +48,15 @@ public class Locker {
   }
   private void createFile(){
     String fname;
-    System.out.print("Enter File Name - ");
+    System.out.print("Enter File Name to add - ");
     fname = input.nextLine();
     CreateFile f1 = new CreateFile(fname);
+  }
+  private void deleteFile() {
+    String fname;
+    System.out.print("Enter File Name to delete - ");
+    fname = input.nextLine();
+    DeleteFile f1 = new DeleteFile(fname);
   }
   public void Operations(){
     String key="";
@@ -62,13 +68,12 @@ public class Locker {
           this.createFile();
           break;
         case "2":
-          
+          this.deleteFile();
           break;
         case "3":
           this.searchFile();
           break;
-        case "4":
-          
+        case "4":          
           break;
         default:
           System.out.println("\nWrong Input!!");
